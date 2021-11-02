@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Select, Card, Row, Typography, Col, Avatar } from "antd";
 import moment from "moment";
 
-import { useGetCryptoNewsQuery } from "../sevices/cryptoNewsApi";
-import { useGetCryptosQuery } from "../sevices/cryptoApi";
+import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
+import { useGetCryptosQuery } from "../services/cryptoApi";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -37,8 +37,10 @@ const News = ({ simplified }) => {
             }
           >
             <Option value="Cryptocurrency">Cryptocurrency</Option>
-            {data?.data?.coins.map((coin) => (
-              <option value={coin.name}>{coin.name}</option>
+            {data?.data?.coins.map((coin, i) => (
+              <option value={coin.name} key={i}>
+                {coin.name}
+              </option>
             ))}
           </Select>
         </Col>
